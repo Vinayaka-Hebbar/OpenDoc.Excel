@@ -1,0 +1,38 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net45</TargetFramework>
+    <DefineConstants Condition="'$(VisualStudioVersion)'&gt;= 16">LATEST_VS</DefineConstants>
+    <Description>OpenDoc for generating xlsx using xml template file</Description>
+    <RepositoryUrl>https://github.com/Vinayaka-Hebbar/OpenDoc.Excel</RepositoryUrl>
+    <Version>1.0.1</Version>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)'=='Release'">
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Authors>Vinayaka Hebbar</Authors>
+    <PackageReleaseNotes></PackageReleaseNotes>
+    <PackageId>OpenDoc.Excel</PackageId>
+    <PackageTags>excel</PackageTags>
+    <RepositoryType>Library</RepositoryType>
+    <RootNamespace>OpenDoc.Excel</RootNamespace>
+    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="EPPlus" Version="4.5.3.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\LICENSE">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\OpenDoc.NET\Legacy\OpenDoc.Core.csproj" />
+  </ItemGroup>
+
+</Project>

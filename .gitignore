@@ -3,3 +3,8 @@
 ################################################################################
 
 /.vs
+/src/obj
+/OpenDoc.ExcelTests/bin
+/OpenDoc.ExcelTests/obj
+/src/bin
+/src/.vs/OpenDoc.Excel

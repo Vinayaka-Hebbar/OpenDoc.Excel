@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<document xmlns="http://schemas.com/doc" xmlns:excel="http://schemas.com/doc/excel" font-family="Arial">
+  <defines>
+    <define name="rangeList" property="XBarRangeDataList"/>
+    <define name="param" property="ParameterComputeData"/>
+    <define name="rangeCount" value="{{rangeList.Count - 1}}"/>
+    <define name="tableStart1" value="{{20}}"/>
+    <define name="tableStart2" value="{{23}}"/>
+  </defines>
+  <page excel:page-break-view="true" excel:print-area="1,1,15,60" excel:fit-to-page="true">
+    <!--First Table-->
+    <table excel:row="1" excel:column="{{tableStart1}}">
+      <tr>
+        <td>X</td>
+        <td>Y</td>
+      </tr>
+      <foreach in="rangeList">
+        <tr>
+          <td>{{item.GroupID}}</td>
+          <td>{{item.Average}}</td>
+        </tr>
+      </foreach>
+    </table>
+    <!--Second Table-->
+    <table excel:row="1" excel:column="{{tableStart2}}">
+      <tr>
+        <td>X</td>
+        <td>Y</td>
+      </tr>
+      <foreach in="rangeList">
+        <tr>
+          <td>{{item.GroupID}}</td>
+          <td>{{item.Range}}</td>
+        </tr>
+      </foreach>
+    </table>
+    <!--First Chart-->
+    <excel:chart title="Group Id vs Average" type="Line" legend-position="Bottom" excel:row="1" excel:column="1" x-label="Group Id" y-label="Average" width="800" height="400">
+      <excel:series>
+        <x-axis start-row="2" end-row="{{2+rangeCount}}" start-column="{{tableStart1}}" end-column="{{tableStart1}}"/>
+        <y-axis start-row="2" end-row="{{2+rangeCount}}" start-column="{{tableStart1+1}}" end-column="{{tableStart1+1}}"/>
+      </excel:series>
+    </excel:chart>
+    <!--Second Chart-->
+    <excel:chart title="Group Id vs Range" type="Line" legend-position="Bottom" excel:row="22" excel:column="1" x-label="Group Id" y-label="Range" width="800" height="400">
+      <excel:series>
+        <x-axis start-row="2" end-row="{{2+rangeCount}}" start-column="{{tableStart2}}" end-column="{{tableStart2}}"/>
+        <y-axis start-row="2" end-row="{{2+rangeCount}}" start-column="{{tableStart2+1}}" end-column="{{tableStart2+1}}"/>
+      </excel:series>
+    </excel:chart>
+    <!--Details Table-->
+    <table excel:row="45">
+      <tr>
+        <td bgcolor="gray">Average:</td>
+        <td bgcolor="gray">{{param.Average}}</td>
+        <td border="none"/>
+        <td bgcolor="gray">UCL:</td>
+        <td bgcolor="gray">{{param.UCL}}</td>
+      </tr>
+      <tr>
+        <td bgcolor="gray">Range:</td>
+        <td bgcolor="gray">{{param.Range}}</td>
+        <td border="none"/>
+        <td bgcolor="gray">CL</td>
+        <td bgcolor="gray">{{param.CL}}</td>
+      </tr>
+      <tr>
+        <td bgcolor="gray">Min:</td>
+        <td bgcolor="gray">{{param.Min}}</td>
+        <td border="none"/>
+        <td bgcolor="gray">LCL:</td>
+        <td bgcolor="gray">{{param.LCL}}</td>
+      </tr>
+      <tr>
+        <td bgcolor="gray">Max:</td>
+        <td bgcolor="gray">{{param.Max}}</td>
+        <td border="none"/>
+        <td bgcolor="gray">RBar:</td>
+        <td bgcolor="gray">{{param.RBar}}</td>
+      </tr>
+    </table>
+  </page>
+</document>

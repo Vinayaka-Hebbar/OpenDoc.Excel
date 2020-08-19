@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<document xmlns="http://schemas.com/doc" xmlns:excel="http://schemas.com/doc/excel" font-family="Arial">
+  <defines>
+    <define name="date" eval="datetime(`dd-mm-yyyy`)"/>
+  </defines>
+  <page excel:name="Coordinates-D21" excel:font-family="Comic Sans MS">
+    <![CDATA[{{
+      var getDate = func () => 'Ok';
+     }}]]>
+    <table excel:row="1" excel:column="2">
+      <tr>
+        <td colspan="9">Stumpp, Schuele &amp; Somappa Springs Pvt Ltd</td>
+        <td>{{getDate()}}</td>
+      </tr>
+      <tr>
+        <td colspan="10" h-align="center" font-style="bold">DEVELOPMENT LENGTH</td>
+      </tr>
+    </table>
+  </page>
+</document>
